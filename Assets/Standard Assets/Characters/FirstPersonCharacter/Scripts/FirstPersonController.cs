@@ -43,8 +43,8 @@ namespace UnityStandardAssets.Characters.FirstPerson {
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
-        private float m_Height = 1.8f;
-        private float m_CrouchHeight = .5f;
+        public float m_Height = 1.8f;
+        public float m_CrouchHeight = .5f;
 
         // Use this for initialization
         private void Start() {
