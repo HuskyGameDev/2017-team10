@@ -6,8 +6,6 @@ public class LeanScript : MonoBehaviour {
 
     enum Leaning { Right, Center, Left };
     Leaning curLeaning;
-    CharacterController mainCont;
-    Camera fpsCam;
 
     public float speed = 5;
     public float leanx = .3f;
@@ -15,7 +13,6 @@ public class LeanScript : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        fpsCam = Camera.main;
         curLeaning = Leaning.Center;
         step = speed * Time.deltaTime;
         step2 = speed * 1.5f * Time.deltaTime;
@@ -24,6 +21,11 @@ public class LeanScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        LeanInput();
+        LeanMove(); 
+    }
+
+    void LeanInput() { //Handles the input, which then goes
         if (Input.GetButton("LeanLeft"))
             curLeaning = Leaning.Left;
         else if (Input.GetButton("LeanRight"))
@@ -32,30 +34,28 @@ public class LeanScript : MonoBehaviour {
             curLeaning = Leaning.Center;
         else
             curLeaning = Leaning.Center;
-
-        LeanMove();
     }
 
-    void LeanMove() {
+    void LeanMove() { //Handles actual movement
 
-        if (curLeaning == Leaning.Center) {
+        if (curLeaning == Leaning.Center) { //Moving to center
 
             if (transform.localPosition.x != 0) {
                 transform.localPosition = Vector3.MoveTowards(transform.localPosition, new Vector3(0, transform.localPosition.y), step2);
             }
 
         }
-        else if (curLeaning == Leaning.Left) {
+        else if (curLeaning == Leaning.Left) { //Leaning Left
 
             if (transform.localPosition.x != -leanx)
-                if (!Physics.Raycast(transform.localPosition, fpsCam.transform.right * -1, leanx - transform.localPosition.x)) {
+                if (!Physics.Raycast(transform.localPosition, transform.transform.right * -1, leanx - transform.localPosition.x)) {
                     transform.localPosition = Vector3.MoveTowards(transform.localPosition, new Vector3(-leanx, transform.localPosition.y), step);
                 }
         }
-        else if (curLeaning == Leaning.Right) {
+        else if (curLeaning == Leaning.Right) { //Leaning Right
 
             if (transform.localPosition.x != leanx)
-                if (!Physics.Raycast(transform.localPosition, fpsCam.transform.right, leanx - transform.localPosition.x)) {
+                if (!Physics.Raycast(transform.localPosition, transform.transform.right, leanx - transform.localPosition.x)) {
                     transform.localPosition = Vector3.MoveTowards(transform.localPosition, new Vector3(leanx, transform.localPosition.y), step);
                 }
         }
