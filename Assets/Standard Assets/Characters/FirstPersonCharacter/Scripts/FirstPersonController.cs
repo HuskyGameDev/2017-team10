@@ -254,19 +254,19 @@ namespace UnityStandardAssets.Characters.FirstPerson {
 
         //NEW
         private void Crouch() {
-
+			float crouchspeed = 5f;
             float heightChange = .5f * Time.fixedDeltaTime * 8;
             float deltaHeight = m_Height - m_CharacterController.height;
             if (m_IsCrouching && m_CharacterController.height >= m_CrouchHeight) {
                 //This changes the Camera height down
                 Camera.main.transform.localPosition = Vector3.MoveTowards(Camera.main.transform.localPosition, new Vector3(Camera.main.transform.localPosition.x, camCrouchHeight), heightChange);
                 //This moves the controller's collider's height downwards
-                if (Mathf.SmoothDamp(m_CharacterController.height, m_CrouchHeight, ref crouchVel, crouchSmT, 5) < m_CrouchHeight) { //base case
+				if (Mathf.SmoothDamp(m_CharacterController.height, m_CrouchHeight, ref crouchVel, crouchSmT, crouchspeed) < m_CrouchHeight) { //base case
                     m_CharacterController.height = m_CrouchHeight;
                 }
                 else {
                     //Smooth crouch down
-                    m_CharacterController.height = Mathf.SmoothDamp(m_CharacterController.height, m_CrouchHeight, ref crouchVel, crouchSmT, 5);
+					m_CharacterController.height = Mathf.SmoothDamp(m_CharacterController.height, m_CrouchHeight, ref crouchVel, crouchSmT, crouchspeed);
                 }
             } else if (!m_IsCrouching && m_CharacterController.height < m_Height) { //Standing up, making sure not to go over. Then check if there's anything above.
                 //This changes the Camera height up
@@ -274,14 +274,13 @@ namespace UnityStandardAssets.Characters.FirstPerson {
                     Camera.main.transform.localPosition = Vector3.MoveTowards(Camera.main.transform.localPosition, new Vector3(Camera.main.transform.localPosition.x, camStandHeight), heightChange);
                 //This moves the controller's collider's height upwards
                 if (!Physics.Raycast(m_CharacterController.transform.TransformPoint(0, m_CharacterController.height, 0), m_CharacterController.transform.up, deltaHeight))
-                    if (Mathf.SmoothDamp(m_CharacterController.height, m_Height, ref standVel, standSmT, 5) > m_Height) {//base case
+				if (Mathf.SmoothDamp(m_CharacterController.height, m_Height, ref standVel, standSmT, crouchspeed) > m_Height) {//base case
                         m_CharacterController.height = m_Height;
-                    }
-                    else {
-                        float beforeHeight = m_CharacterController.height;
-                        m_CharacterController.height = Mathf.SmoothDamp(m_CharacterController.height, m_Height, ref standVel, standSmT, 5);
-                        m_CharacterController.transform.position += new Vector3(0, m_CharacterController.height - beforeHeight, 0);
-                    }
+                } else {
+                    float beforeHeight = m_CharacterController.height;
+					m_CharacterController.height = Mathf.SmoothDamp(m_CharacterController.height, m_Height, ref standVel, standSmT, crouchspeed);
+                    m_CharacterController.transform.position += new Vector3(0, m_CharacterController.height - beforeHeight, 0);
+                }
 
             }
         }
