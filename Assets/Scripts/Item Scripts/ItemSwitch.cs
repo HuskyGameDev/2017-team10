@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemScript : MonoBehaviour {
+public class ItemSwitch : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

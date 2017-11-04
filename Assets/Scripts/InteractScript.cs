@@ -6,10 +6,12 @@ public class InteractScript : MonoBehaviour {
 
     public float interactRange = 2.5f; //The player's "reach"
     GameObject toBeAdded; //This will come in handy when an item must be added to player's inventory.
-    
+
+    private Transform CamT; //To shoot the raycast out from
+
 	// Use this for initialization
 	void Start () {
-		
+        CamT = Camera.main.transform;
 	}
 	
 	// Update is called once per frame
@@ -17,12 +19,13 @@ public class InteractScript : MonoBehaviour {
         RaycastHit hit;
 
         if (Input.GetButtonDown("Interact")) { //This will be f as standard
-            Physics.Raycast(transform.position, transform.forward, out hit, interactRange); //Reach out
-
+            Physics.Raycast(CamT.position, CamT.forward, out hit, interactRange); //Reach out
             if(hit.transform.tag == "Item") { //Item is anything that goes into inventory
-                toBeAdded = hit.transform.GetComponent<ItemHolder>().inventoryItem;
-                Instantiate(toBeAdded, transform.GetChild(0).localPosition, transform.rotation, transform.GetChild(0));
-                Destroy(hit.transform.gameObject);
+                if(hit.transform.GetComponent<ItemScript>() != null) {
+                    hit.transform.GetComponent<ItemScript>().PickUp();
+                } else {
+                    Debug.LogError(hit.transform.name + " NEEDS ITEM SCRIPT AT " + hit.transform.position);
+                }
             } else if (hit.transform.tag == "Interactable") { //Interactable is anything in the world, such as buttons or notes
 
             }
