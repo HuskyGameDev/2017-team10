@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class VisionDetect : MonoBehaviour {
 
+    public bool trigger = false;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -13,4 +15,13 @@ public class VisionDetect : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        trigger = true;
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.enabled = false;
+        }
+    }
 }
