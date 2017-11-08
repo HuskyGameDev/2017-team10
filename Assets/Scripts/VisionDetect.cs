@@ -5,6 +5,8 @@ using UnityEngine;
 public class VisionDetect : MonoBehaviour {
 
     public bool trigger = false;
+    public GameObject player;
+
 
 	// Use this for initialization
 	void Start () {
@@ -18,10 +20,13 @@ public class VisionDetect : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        trigger = true;
         if (other.gameObject.CompareTag("Player"))
         {
-            other.enabled = false;
+            Vector3 relPos = player.transform.position - transform.position;
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, relPos, out hit))
+                if (hit.collider.gameObject.CompareTag("Player"))
+                    trigger = true;
         }
     }
 }
