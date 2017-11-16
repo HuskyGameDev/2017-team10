@@ -5,12 +5,13 @@ using UnityEngine;
 public class ItemScript : MonoBehaviour {
 
     public int itemRep; //The prefab for the object to be picked up
+
     private GameObject inventNode; //The node to put prefabs
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         inventNode = GameObject.FindWithTag("InventoryNode");
-	}
+    }
 
     //Use this for when the player interacts with this item
     public void PickUp() {

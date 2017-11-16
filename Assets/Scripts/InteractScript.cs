@@ -9,26 +9,31 @@ public class InteractScript : MonoBehaviour {
 
     private Transform CamT; //To shoot the raycast out from
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         CamT = Camera.main.transform;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update() {
         RaycastHit hit;
 
         if (Input.GetButtonDown("Interact")) { //This will be f as standard
             Physics.Raycast(CamT.position, CamT.forward, out hit, interactRange); //Reach out
-            if(hit.transform.tag == "Item") { //Item is anything that goes into inventory
-                if(hit.transform.GetComponent<ItemScript>() != null) {
-                    hit.transform.GetComponent<ItemScript>().PickUp();
-                } else {
-                    Debug.LogError(hit.transform.name + " NEEDS ITEM SCRIPT AT " + hit.transform.position);
+            if (hit.transform != null) {
+                if (hit.transform.tag == "Item") { //Item is anything that goes into inventory
+                    if (hit.transform.GetComponent<ItemScript>() != null) {
+                        hit.transform.GetComponent<ItemScript>().PickUp();
+                        transform.GetComponent<ItemSwitch>().recheckItems = true; //Recheck the items to see if more ammo has been added that would affect what's being shown
+                    }
+                    else {
+                        Debug.LogError(hit.transform.name + " NEEDS ITEM SCRIPT AT " + hit.transform.position);
+                    }
                 }
-            } else if (hit.transform.tag == "Interactable") { //Interactable is anything in the world, such as buttons or notes
+                else if (hit.transform.tag == "Interactable") { //Interactable is anything in the world, such as buttons or notes
 
+                }
             }
         }
-	}
+    }
 }
