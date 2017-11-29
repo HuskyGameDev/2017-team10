@@ -265,6 +265,10 @@ Prefab:
       propertyPath: m_Name
       value: VisionCone
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b521fe27fa9740740ae8cec47c7e2511, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b521fe27fa9740740ae8cec47c7e2511, type: 3}
   m_IsPrefabParent: 0
@@ -310,11 +314,11 @@ GameObject:
   - component: {fileID: 699568889}
   - component: {fileID: 699568888}
   - component: {fileID: 699568887}
-  - component: {fileID: 699568886}
   - component: {fileID: 699568885}
+  - component: {fileID: 699568886}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: AttackEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -344,17 +348,17 @@ NavMeshAgent:
 --- !u!114 &699568886
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114617392282939586, guid: d6a7c470b95dbed4db2c8c900ff97293,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 699568884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bf18bb1820fd18439d79cb927c4332b, type: 3}
+  m_Script: {fileID: 11500000, guid: 881ebe5e49743c44d842e6d002091a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target1: {fileID: 364564076}
   target2: {fileID: 702657282}
+  player: {fileID: 1092449245}
 --- !u!54 &699568887
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -650,7 +654,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 994318070}
   m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: 2, z: -10}
+  m_LocalPosition: {x: 0, y: 7.41, z: -12.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -667,6 +671,7 @@ GameObject:
   - component: {fileID: 1092449248}
   - component: {fileID: 1092449247}
   - component: {fileID: 1092449246}
+  - component: {fileID: 1092449250}
   m_Layer: 0
   m_Name: Player Standin
   m_TagString: Player
@@ -732,12 +737,23 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1092449245}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.97, y: 0.92, z: 8.46}
+  m_LocalPosition: {x: -10.97, y: 0.92, z: 1.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1092449250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1092449245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b746b7626036914697743f61b30bd16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1182362908 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100002, guid: b521fe27fa9740740ae8cec47c7e2511, type: 3}
@@ -922,5 +938,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e3e6be027de8a4d9edef91b35ca6fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: 0
   player: {fileID: 1092449245}
+  enemy: {fileID: 699568884}
