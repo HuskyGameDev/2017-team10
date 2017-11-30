@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//LeanScript handles leaning the main camera to create the effect of the character leaning over.
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

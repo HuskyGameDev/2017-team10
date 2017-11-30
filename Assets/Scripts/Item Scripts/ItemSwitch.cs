@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//ItemSwitch handles when the player wants to select a different object in their inventory.
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

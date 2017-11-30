@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//ItemScript handles what happens when the player selects an object to pick up
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
