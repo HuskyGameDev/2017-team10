@@ -198,9 +198,14 @@ namespace UnityStandardAssets.Characters.FirstPerson {
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running
             m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
-            if (Input.GetButtonDown("Crouch")) {
+
+            //Crouching works by pressing and holding the left control key or toggling via the c key.
+            if (Input.GetKeyDown(KeyCode.LeftControl)) {
+                m_IsCrouching = true;
+            } else if (Input.GetKeyUp(KeyCode.LeftControl)) {
+                m_IsCrouching = false;
+            } else if (Input.GetButtonDown("Crouch")) {
                 m_IsCrouching = !m_IsCrouching;
-                Crouch();
             }
 #endif
             // set the desired speed to be walking or running or crouch
@@ -263,8 +268,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
                 //This moves the controller's collider's height downwards
 				if (Mathf.SmoothDamp(m_CharacterController.height, m_CrouchHeight, ref crouchVel, crouchSmT, crouchspeed) < m_CrouchHeight) { //base case
                     m_CharacterController.height = m_CrouchHeight;
-                }
-                else {
+                } else {
                     //Smooth crouch down
 					m_CharacterController.height = Mathf.SmoothDamp(m_CharacterController.height, m_CrouchHeight, ref crouchVel, crouchSmT, crouchspeed);
                 }

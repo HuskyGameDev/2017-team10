@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//ItemHeld handles the ammo for any item as well as if you can see it or not when ammo is 0.
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//InteractScript handles interactions player has with items and triggers in the worldspace
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

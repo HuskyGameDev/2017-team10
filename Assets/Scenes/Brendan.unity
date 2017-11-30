@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gThrowSpeed: 10
-  grenadePre: {fileID: 1693362071756770, guid: 4dd5b79de884fcf46aaa13cc4160c53c, type: 2}
+  grenadePre: {fileID: 1528872659012130, guid: 8ca56fe66d5c1b6468457a15130b1de4, type: 2}
   getRid: 0
 --- !u!1 &723945085
 GameObject:
@@ -850,6 +850,10 @@ Prefab:
         type: 2}
       propertyPath: m_CullingMask.m_Bits
       value: 4294967039
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758444775270424, guid: 2b0ef3b124205c5488627e1983ce395f, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b0ef3b124205c5488627e1983ce395f, type: 2}
