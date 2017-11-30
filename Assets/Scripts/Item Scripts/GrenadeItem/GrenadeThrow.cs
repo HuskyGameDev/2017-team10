@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//GrenadeThrow handles the input and launching of the grenade
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ public class GrenadeThrow : MonoBehaviour {
 
     public float gThrowSpeed = 10;
     public GameObject grenadePre;
-    public bool getRid = false;
+    public bool getRid = false, paused = false;
 
     private Transform playerT;
     private bool oneGrenadeOnly = false; //Makes sure a player is throwing one grenade at a time
@@ -24,7 +25,7 @@ public class GrenadeThrow : MonoBehaviour {
     }
 
     private void Throw() {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && !paused) {
             grenadeAmmo.SetAmmo(grenadeAmmo.GetAmmo() - 1);
             GameObject grenade = Instantiate(grenadePre);
             grenade.transform.position = playerT.position + playerT.forward * 1.06125f;

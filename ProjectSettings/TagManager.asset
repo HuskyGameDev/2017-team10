@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Item
   - InventoryNode
+  - AttackEnemy
+  - SentryEnemy
   layers:
   - Default
   - TransparentFX
