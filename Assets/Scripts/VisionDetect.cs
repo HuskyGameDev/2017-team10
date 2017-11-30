@@ -66,6 +66,7 @@ public class VisionDetect : MonoBehaviour {
                 if (hit.collider.gameObject.CompareTag("Player"))
                 {
                     enemy.GetComponent<AIMovement>().OnDetect();
+                    detected = true;
                     mia = false;
                     timer = 0;
                 }
@@ -86,6 +87,7 @@ public class VisionDetect : MonoBehaviour {
         {
             detected = false;
             enemy.GetComponent<AIMovement>().Patrol();
+            timer = 0;
         }
     }
 }

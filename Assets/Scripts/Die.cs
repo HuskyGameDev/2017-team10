@@ -17,5 +17,16 @@ public class Die : MonoBehaviour {
     public void PlayerDie()
     {
         gameObject.SetActive(false);
+        GameObject[] sentries = GameObject.FindGameObjectsWithTag("SentryEnemy");
+        foreach(GameObject go in sentries)
+        {
+            go.GetComponent<AIMovement>().Patrol();
+        }
+
+        GameObject[] attackers = GameObject.FindGameObjectsWithTag("AttackEnemy");
+        foreach(GameObject go in attackers)
+        {
+            go.GetComponent<AIMovement>().Patrol();
+        }
     }
 }
