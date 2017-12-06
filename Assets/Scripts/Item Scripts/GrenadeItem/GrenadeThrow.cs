@@ -32,9 +32,9 @@ public class GrenadeThrow : MonoBehaviour {
             Rigidbody rb = grenade.GetComponent<Rigidbody>();
             rb.velocity = playerT.forward * gThrowSpeed;
 
-            if(grenadeAmmo.GetAmmo() <= 0) {
-                transform.parent.GetComponent<ItemSwitch>().recheckItems = true;
-            }
+//            if(grenadeAmmo.GetAmmo() <= 0) {
+//               transform.parent.GetComponent<ItemSwitch>().recheckItems = true;
+//            }
         }
     }
 }
