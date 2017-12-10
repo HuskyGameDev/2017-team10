@@ -93,6 +93,10 @@ public class AIMovement : MonoBehaviour {
                     {
                         agent.isStopped = true;
                     }
+                    else
+                    {
+                        agent.isStopped = false;
+                    }
                     break;
                 case DISABLED:
                     agent.isStopped = true;
