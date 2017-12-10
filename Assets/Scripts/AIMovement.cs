@@ -93,6 +93,10 @@ public class AIMovement : MonoBehaviour {
                     {
                         agent.isStopped = true;
                     }
+                    else
+                    {
+                        agent.isStopped = false;
+                    }
                     break;
                 case DISABLED:
                     agent.isStopped = true;
@@ -128,9 +132,11 @@ public class AIMovement : MonoBehaviour {
                         closest = go;
                     }
                 }
-                if(closest != null)
+                if (closest != null)
+                {
                     closest.gameObject.GetComponent<AIMovement>().OnDetect();
-                summoned = true;
+                    summoned = true;
+                }
             }
         }
     }

@@ -72,15 +72,17 @@ public class ItemSwitch : MonoBehaviour {
         //loops through each child in the WeaponHolder
         foreach (Transform weapon in transform) {
             if (index == selectedObj) {
-                if(!weapon.GetComponent<ItemHeld>().ammoShow && weapon.GetComponent<ItemHeld>().GetAmmo() <= 0)
+                if(!weapon.GetComponent<ItemHeld>().ammoShow && weapon.GetComponent<ItemHeld>().GetAmmo() <= 0) {
                     weapon.gameObject.SetActive(false);
-                else if (weapon.GetComponent<ItemHeld>().ammoShow && weapon.GetComponent<ItemHeld>().GetAmmo() == 0)
+                    recheckItems = true;
+                } else if (weapon.GetComponent<ItemHeld>().ammoShow && weapon.GetComponent<ItemHeld>().GetAmmo() == 0)
                     weapon.gameObject.SetActive(true);
                 else if (!weapon.GetComponent<ItemHeld>().ammoShow && weapon.GetComponent<ItemHeld>().GetAmmo() != 0)
                     weapon.gameObject.SetActive(true);
             }
             else {
                 weapon.gameObject.SetActive(false);
+                recheckItems = true;
             }
 
             index++;

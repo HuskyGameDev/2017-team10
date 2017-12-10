@@ -12,6 +12,8 @@ public class LeanScript : MonoBehaviour {
     public float leanx = .3f;
     private float step, step2;
 
+    public bool paused = false;
+
     // Use this for initialization
     void Start() {
         curLeaning = Leaning.Center;
@@ -22,8 +24,10 @@ public class LeanScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        LeanInput();
-        LeanMove(); 
+        if (!paused) {
+            LeanInput();
+            LeanMove();
+        }
     }
 
     void LeanInput() { //Handles the input, which then goes
