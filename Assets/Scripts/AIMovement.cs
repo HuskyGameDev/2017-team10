@@ -109,12 +109,13 @@ public class AIMovement : MonoBehaviour {
 
     public void OnDetect()
     {
-        if (gameObject.CompareTag("AttackEnemy"))
+       
+        if (gameObject.CompareTag("AttackEnemy") && DrillState != DISABLED)
         {
             agent.speed = 7;
             DrillState = FOLLOW;
         }
-        if (gameObject.CompareTag("SentryEnemy"))
+        if (gameObject.CompareTag("SentryEnemy") && SentryState != DISABLED)
         {
             SentryState = FOLLOW;
             agent.speed = 10;

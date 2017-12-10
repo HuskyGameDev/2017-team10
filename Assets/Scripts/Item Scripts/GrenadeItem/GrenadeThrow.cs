@@ -37,6 +37,7 @@ public class GrenadeThrow : MonoBehaviour {
             grenadeAmmo.SetAmmo(grenadeAmmo.GetAmmo() - 1);
             fub.recheckItems = true;
             GameObject grenade = Instantiate(grenadePre);
+            grenade.GetComponent<AudioSource>().Play();
             grenade.transform.position = playerT.position + playerT.forward * 1.06125f;
             Rigidbody rb = grenade.GetComponent<Rigidbody>();
             rb.velocity = playerT.forward * gThrowSpeed;

@@ -15,7 +15,8 @@ public class GrenadeDet : MonoBehaviour {
         if(blast != null)
             if (!goneOff) {
                 blast.SetActive(true);
-        }
+                blast.GetComponent<AudioSource>().Play();
+            }
     }
 
     private void Update() {
