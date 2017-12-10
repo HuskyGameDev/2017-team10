@@ -13,9 +13,11 @@ public class GrenadeThrow : MonoBehaviour {
     private bool oneGrenadeOnly = false; //Makes sure a player is throwing one grenade at a time
 
     ItemHeld grenadeAmmo;
+    ItemSwitch fub;
 
     void Start() {
         grenadeAmmo = gameObject.GetComponent<ItemHeld>();
+        fub = gameObject.GetComponentInParent<ItemSwitch>();
         playerT = Camera.main.transform;
     }
 
@@ -27,6 +29,7 @@ public class GrenadeThrow : MonoBehaviour {
     private void Throw() {
         if (Input.GetMouseButtonDown(0) && !paused) {
             grenadeAmmo.SetAmmo(grenadeAmmo.GetAmmo() - 1);
+            fub.recheckItems = true;
             GameObject grenade = Instantiate(grenadePre);
             grenade.transform.position = playerT.position + playerT.forward * 1.06125f;
             Rigidbody rb = grenade.GetComponent<Rigidbody>();
