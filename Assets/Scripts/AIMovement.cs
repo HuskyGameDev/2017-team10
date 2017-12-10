@@ -132,9 +132,11 @@ public class AIMovement : MonoBehaviour {
                         closest = go;
                     }
                 }
-                if(closest != null)
+                if (closest != null)
+                {
                     closest.gameObject.GetComponent<AIMovement>().OnDetect();
-                summoned = true;
+                    summoned = true;
+                }
             }
         }
     }
