@@ -23,7 +23,7 @@ public class GrenadeThrow : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (paused) {
+        if (!paused) {
             Throw();
         }
     }
