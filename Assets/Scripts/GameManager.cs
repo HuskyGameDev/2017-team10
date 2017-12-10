@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour {
 	public GameObject PauseMenu;
 	public GameObject Character;
 
+    private Transform mainCam;
+
 	// Use this for initialization
 	void Start () {
-		
+        mainCam = Camera.main.transform;
 	}
 	
 	// Update is called once per frame
@@ -21,16 +23,19 @@ public class GameManager : MonoBehaviour {
 
 	public void TogglePauseMenu(){
 		if (PauseMenu.activeSelf) {
-			PauseMenu.SetActive(false);
+            mainCam.GetComponent<LeanScript>().paused = false;
+            mainCam.GetChild(0).GetChild(0).GetComponent<GrenadeThrow>().SetPause();
+            PauseMenu.SetActive(false);
 			Time.timeScale = 1.0f;
-			GameObject.Find ("FirstPersonCharacter").GetComponent<LeanScript>().enabled = true;
-			GameObject.Find ("Grenade").GetComponent<GrenadeThrow> ().enabled = true;
-			//Character.GetComponent<FirstPersonController>().enabled = true;
-		} else {
+            //GameObject.Find ("GrenadeInv").GetComponent<GrenadeThrow> ().enabled = true;
+            //Character.GetComponent<FirstPersonController>().enabled = true;
+        } else {
 			PauseMenu.SetActive(true);
-			Time.timeScale = 0f;
-			GameObject.Find ("FirstPersonCharacter").GetComponent<LeanScript>().enabled = false;
-			GameObject.Find ("Grenade").GetComponent<GrenadeThrow> ().enabled = false;
+            mainCam.GetComponent<LeanScript>().paused = true;
+            mainCam.GetChild(0).GetChild(0).GetComponent<GrenadeThrow>().SetPause();
+            Time.timeScale = 0f;
+            
+            //GameObject.Find ("GrenadeInv").GetComponent<GrenadeThrow> ().enabled = false;
 			//GameObject.Find ("FPSController").GetComponent<PlayerController>
 //			GameObject.Find ("FPSController").GetComponent ().enabled = false;
 		}

@@ -23,11 +23,17 @@ public class GrenadeThrow : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        Throw();
+        if (paused) {
+            Throw();
+        }
+    }
+
+    public void SetPause() {
+        paused = !paused;
     }
 
     private void Throw() {
-        if (Input.GetMouseButtonDown(0) && !paused) {
+        if (Input.GetMouseButtonDown(0)) {
             grenadeAmmo.SetAmmo(grenadeAmmo.GetAmmo() - 1);
             fub.recheckItems = true;
             GameObject grenade = Instantiate(grenadePre);
