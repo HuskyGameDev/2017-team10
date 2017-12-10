@@ -16,8 +16,10 @@ public class GrenadeBlast : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) { 
-        if(other.transform.GetComponent<GrenadeHit>() != null) {
-            other.transform.SendMessage("GHit");
+        if(other.CompareTag("SentryEnemy") || other.CompareTag("AttackEnemy"))
+        {
+            other.GetComponent<AIMovement>().OnEMP();
+            other.GetComponent<AudioSource>().Play();
         }
     }
 
