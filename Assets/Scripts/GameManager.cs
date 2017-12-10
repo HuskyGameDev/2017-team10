@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void ExitGameBtn(){
-		UnityEditor.EditorApplication.isPlaying = false;
+//		UnityEditor.EditorApplication.isPlaying = false;
 		Application.Quit ();
 	}
 
