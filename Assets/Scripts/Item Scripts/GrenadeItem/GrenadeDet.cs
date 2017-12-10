@@ -12,8 +12,15 @@ public class GrenadeDet : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (!goneOff) {
-            blast.SetActive(true);
+        if(blast != null)
+            if (!goneOff) {
+                blast.SetActive(true);
+        }
+    }
+
+    private void Update() {
+        if(blast == null) {
+            Destroy(gameObject);
         }
     }
 

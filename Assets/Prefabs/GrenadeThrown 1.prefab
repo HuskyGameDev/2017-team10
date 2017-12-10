@@ -194,7 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upScale: 0
   multi: 1.5
-  bounds: 25
+  bounds: 30
 --- !u!135 &135671217914558534
 SphereCollider:
   m_ObjectHideFlags: 1

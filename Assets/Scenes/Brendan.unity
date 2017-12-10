@@ -277,7 +277,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 581123908}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &581123913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +305,7 @@ MonoBehaviour:
   gThrowSpeed: 10
   grenadePre: {fileID: 1528872659012130, guid: 8ca56fe66d5c1b6468457a15130b1de4, type: 2}
   getRid: 0
+  paused: 0
 --- !u!1 &723945085
 GameObject:
   m_ObjectHideFlags: 0
