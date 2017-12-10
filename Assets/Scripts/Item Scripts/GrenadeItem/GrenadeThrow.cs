@@ -7,7 +7,7 @@ public class GrenadeThrow : MonoBehaviour {
 
     public float gThrowSpeed = 10;
     public GameObject grenadePre;
-    public bool getRid = false, paused = false;
+    public bool getRid = false, paused = true;
 
     private Transform playerT;
     private bool oneGrenadeOnly = false; //Makes sure a player is throwing one grenade at a time
