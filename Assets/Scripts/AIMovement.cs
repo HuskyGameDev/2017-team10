@@ -22,6 +22,7 @@ public class AIMovement : MonoBehaviour {
 
     private GameObject[] attackers;
     private bool summoned = false;
+    private bool dead = false;
 
     private GameObject closest = null;
 
@@ -61,7 +62,10 @@ public class AIMovement : MonoBehaviour {
                     }
                     break;
                 case ATTACK:
-                    player.GetComponent<Heartbeat>().OnDeath();
+                    if(!dead)
+                        player.GetComponent<Heartbeat>().OnDeath();
+                    Time.timeScale = 0.0f;
+                    dead = true;
                     break;
                 case DISABLED:
                     agent.isStopped = true;

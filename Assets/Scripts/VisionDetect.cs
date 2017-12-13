@@ -36,8 +36,11 @@ public class VisionDetect : MonoBehaviour {
             if (Physics.Raycast(transform.position, relPos, out hit))
                 if (hit.collider.gameObject.CompareTag("Player"))
                 {
-                    enemy.GetComponent<AIMovement>().OnDetect();
-                    detected = true;
+                    if (!detected)
+                    {
+                        enemy.GetComponent<AIMovement>().OnDetect();
+                        detected = true;
+                    }
                     mia = false;
                     timer = 0;
                 }
@@ -65,8 +68,11 @@ public class VisionDetect : MonoBehaviour {
             if (Physics.Raycast(transform.position, relPos, out hit))
                 if (hit.collider.gameObject.CompareTag("Player"))
                 {
-                    enemy.GetComponent<AIMovement>().OnDetect();
-                    detected = true;
+                    if (!detected)
+                    {
+                        enemy.GetComponent<AIMovement>().OnDetect();
+                        detected = true;
+                    }
                     mia = false;
                     timer = 0;
                 }
