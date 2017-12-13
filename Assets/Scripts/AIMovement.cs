@@ -61,11 +61,12 @@ public class AIMovement : MonoBehaviour {
                         agent.isStopped = true;
                     }
                     break;
-                case ATTACK:
-                    if(!dead)
-                        player.GetComponent<Heartbeat>().OnDeath();
-                    Time.timeScale = 0.0f;
-                    dead = true;
+			case ATTACK:
+				if (!dead)
+					player.GetComponent<Heartbeat> ().OnDeath ();
+				Time.timeScale = 0.0f;
+				dead = true;
+				GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().GameOver ();
                     break;
                 case DISABLED:
                     agent.isStopped = true;

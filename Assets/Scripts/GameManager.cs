@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour {
 	public void TogglePauseMenu(){
 		if (PauseMenu.activeSelf) {
             mainCam.GetComponent<LeanScript>().paused = false;
-            mainCam.GetChild(0).GetChild(0).GetComponent<GrenadeThrow>().SetPause();
+//            mainCam.GetChild(0).GetChild(0).GetComponent<GrenadeThrow>().SetPause();
             PauseMenu.SetActive(false);
 			Time.timeScale = 1.0f;
             //GameObject.Find ("GrenadeInv").GetComponent<GrenadeThrow> ().enabled = true;
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour {
         } else {
 			PauseMenu.SetActive(true);
             mainCam.GetComponent<LeanScript>().paused = true;
-            mainCam.GetChild(0).GetChild(0).GetComponent<GrenadeThrow>().SetPause();
+//            mainCam.GetChild(0).GetChild(0).GetComponent<GrenadeThrow>().SetPause();
             Time.timeScale = 0f;
             
             //GameObject.Find ("GrenadeInv").GetComponent<GrenadeThrow> ().enabled = false;
@@ -55,5 +55,9 @@ public class GameManager : MonoBehaviour {
 	public void ResumeBtn(){
 		PauseMenu.SetActive (false);
 		Time.timeScale = 0f;
+	}
+
+	public void GameOver(){
+		PauseMenu.SetActive(true);
 	}
 }
