@@ -235,7 +235,6 @@ namespace UnityStandardAssets.Characters.FirstPerson {
             }
         }
 
-        private bool paused = false; //This boolean and function keep the player from looking around while the game is paused.
         public void SetPause() {
             paused = !paused;
         }
