@@ -235,9 +235,15 @@ namespace UnityStandardAssets.Characters.FirstPerson {
             }
         }
 
+        private bool paused = false; //This boolean and function keep the player from looking around while the game is paused.
+        public void SetPause() {
+            paused = !paused;
+        }
 
         private void RotateView() {
-            m_MouseLook.LookRotation(transform, m_Camera.transform);
+            if (!paused) {
+                m_MouseLook.LookRotation(transform, m_Camera.transform);
+            }
         }
 
 

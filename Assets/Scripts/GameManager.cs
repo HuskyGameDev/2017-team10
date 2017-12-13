@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class GameManager : MonoBehaviour {
 
 	public GameObject UIMan;
 	public GameObject PauseMenu;
 	public GameObject Character;
-
+    
     private Transform mainCam;
 
 	// Use this for initialization
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour {
 
 	public void TogglePauseMenu(){
 		if (PauseMenu.activeSelf) {
+            mainCam.GetComponentInParent<FirstPersonController>().SetPause();
             mainCam.GetComponent<LeanScript>().paused = false;
 //            mainCam.GetChild(0).GetChild(0).GetComponent<GrenadeThrow>().SetPause();
             PauseMenu.SetActive(false);
@@ -31,6 +33,7 @@ public class GameManager : MonoBehaviour {
             //Character.GetComponent<FirstPersonController>().enabled = true;
         } else {
 			PauseMenu.SetActive(true);
+            mainCam.GetComponentInParent<FirstPersonController>().SetPause();
             mainCam.GetComponent<LeanScript>().paused = true;
 //            mainCam.GetChild(0).GetChild(0).GetComponent<GrenadeThrow>().SetPause();
             Time.timeScale = 0f;
