@@ -113,14 +113,14 @@ public class AIMovement : MonoBehaviour {
         if (gameObject.CompareTag("AttackEnemy") && DrillState != DISABLED)
         {
             player.GetComponent<Heartbeat>().OnDetect();
-            agent.speed = 7;
+            agent.speed = 3.5f;
             DrillState = FOLLOW;
         }
         if (gameObject.CompareTag("SentryEnemy") && SentryState != DISABLED)
         {
             player.GetComponent<Heartbeat>().OnDetect();
             SentryState = FOLLOW;
-            agent.speed = 10;
+            agent.speed = 5;
             if(!summoned)
             {
                 attackers = GameObject.FindGameObjectsWithTag("AttackEnemy");
@@ -150,13 +150,13 @@ public class AIMovement : MonoBehaviour {
         agent.isStopped = false;
         if (gameObject.CompareTag("AttackEnemy"))
         {
-            agent.speed = 3.5f;
+            agent.speed = 1.75f;
             DrillState = PATROL;
         }
         if (gameObject.CompareTag("SentryEnemy"))
         {
             SentryState = PATROL;
-            agent.speed = 5;
+            agent.speed = 2.5f;
             if (summoned)
             {
                 closest.gameObject.GetComponent<AIMovement>().Patrol();
