@@ -24,6 +24,8 @@ public class AIMovement : MonoBehaviour {
     private bool summoned = false;
     private bool dead = false;
 
+    private float timer = 0;
+
     private GameObject closest = null;
 
     // Use this for initialization
@@ -70,6 +72,7 @@ public class AIMovement : MonoBehaviour {
                     break;
                 case DISABLED:
                     agent.isStopped = true;
+                    Timer();
                     break;
                 default:
                     break;
@@ -105,6 +108,7 @@ public class AIMovement : MonoBehaviour {
                     break;
                 case DISABLED:
                     agent.isStopped = true;
+                    Timer();
                     break;
                 default:
                     break;
@@ -174,5 +178,17 @@ public class AIMovement : MonoBehaviour {
     {
         DrillState = DISABLED;
         SentryState = DISABLED;
+    }
+
+    private void Timer()
+    {
+        timer += Time.deltaTime;
+        if (timer >= 2)
+        {
+            agent.isStopped = false;
+            DrillState = PATROL;
+            SentryState = PATROL;
+            timer = 0;
+        }
     }
 }
