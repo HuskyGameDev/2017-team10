@@ -61,7 +61,7 @@ public class AIMovement : MonoBehaviour {
                     }
                     break;
                 case ATTACK:
-                    player.GetComponent<Die>().PlayerDie();
+                    player.GetComponent<Heartbeat>().OnDeath();
                     break;
                 case DISABLED:
                     agent.isStopped = true;
@@ -112,11 +112,13 @@ public class AIMovement : MonoBehaviour {
        
         if (gameObject.CompareTag("AttackEnemy") && DrillState != DISABLED)
         {
+            player.GetComponent<Heartbeat>().OnDetect();
             agent.speed = 7;
             DrillState = FOLLOW;
         }
         if (gameObject.CompareTag("SentryEnemy") && SentryState != DISABLED)
         {
+            player.GetComponent<Heartbeat>().OnDetect();
             SentryState = FOLLOW;
             agent.speed = 10;
             if(!summoned)
@@ -144,6 +146,7 @@ public class AIMovement : MonoBehaviour {
 
     public void Patrol()
     {
+        player.GetComponent<Heartbeat>().OnRelax();
         agent.isStopped = false;
         if (gameObject.CompareTag("AttackEnemy"))
         {

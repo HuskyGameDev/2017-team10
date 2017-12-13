@@ -46,6 +46,8 @@ namespace UnityStandardAssets.Characters.FirstPerson {
         public float m_Height = 1.8f;
         public float m_CrouchHeight = .5f;
 
+        private bool paused = false;
+
         // Use this for initialization
         private void Start() {
             m_CharacterController = GetComponent<CharacterController>();
@@ -56,14 +58,15 @@ namespace UnityStandardAssets.Characters.FirstPerson {
             m_StepCycle = 0f;
             m_NextStep = m_StepCycle / 2f;
             m_Jumping = false;
-            m_AudioSource = GetComponent<AudioSource>();
+            m_AudioSource = GetComponents<AudioSource>()[0];
             m_MouseLook.Init(transform, m_Camera.transform);
         }
 
 
         // Update is called once per frame
         private void Update() {
-            RotateView();
+            if(!paused)
+                RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump) {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
