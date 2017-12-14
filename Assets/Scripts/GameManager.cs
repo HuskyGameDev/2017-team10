@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject UIMan;
 	public GameObject PauseMenu;
-	public GameObject Character;
+	public GameObject DeathMenu;
     
     private Transform mainCam;
 
@@ -26,23 +26,14 @@ public class GameManager : MonoBehaviour {
 		if (PauseMenu.activeSelf) {
             mainCam.GetComponentInParent<FirstPersonController>().SetPause();
             mainCam.GetComponent<LeanScript>().paused = false;
-//            mainCam.GetChild(0).GetChild(0).GetComponent<GrenadeThrow>().SetPause();
             PauseMenu.SetActive(false);
 			Time.timeScale = 1.0f;
-            //GameObject.Find ("GrenadeInv").GetComponent<GrenadeThrow> ().enabled = true;
-            //Character.GetComponent<FirstPersonController>().enabled = true;
         } else {
 			PauseMenu.SetActive(true);
             mainCam.GetComponentInParent<FirstPersonController>().SetPause();
             mainCam.GetComponent<LeanScript>().paused = true;
-//            mainCam.GetChild(0).GetChild(0).GetComponent<GrenadeThrow>().SetPause();
             Time.timeScale = 0f;
-            
-            //GameObject.Find ("GrenadeInv").GetComponent<GrenadeThrow> ().enabled = false;
-			//GameObject.Find ("FPSController").GetComponent<PlayerController>
-//			GameObject.Find ("FPSController").GetComponent ().enabled = false;
 		}
-
 		Debug.Log ("GAMEMANAGER:: TimeScale: " + Time.timeScale);
 	}
 
@@ -56,11 +47,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void ResumeBtn(){
-		PauseMenu.SetActive (false);
-		Time.timeScale = 0f;
+		TogglePauseMenu ();
 	}
 
 	public void GameOver(){
-		PauseMenu.SetActive(true);
+		DeathMenu.SetActive(true);
 	}
 }
