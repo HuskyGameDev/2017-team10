@@ -26,13 +26,12 @@ public class InteractScript : MonoBehaviour {
                     if (hit.transform.GetComponent<ItemScript>() != null) {
                         hit.transform.GetComponent<ItemScript>().PickUp();
                         transform.GetComponent<ItemSwitch>().recheckItems = true; //Recheck the items to see if more ammo has been added that would affect what's being shown
-                    }
-                    else {
+                    }else {
                         Debug.LogError(hit.transform.name + " NEEDS ITEM SCRIPT AT " + hit.transform.position);
                     }
                 }
                 else if (hit.transform.tag == "Interactable") { //Interactable is anything in the world, such as buttons or notes
-
+                    hit.transform.SendMessage("InteractAct");
                 }
             }
         }

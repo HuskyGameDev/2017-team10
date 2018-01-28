@@ -8,6 +8,7 @@ TagManager:
   - InventoryNode
   - AttackEnemy
   - SentryEnemy
+  - Interactable
   layers:
   - Default
   - TransparentFX
