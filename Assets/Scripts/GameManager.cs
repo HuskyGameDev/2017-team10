@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject UIMan;
 	public GameObject PauseMenu;
 	public GameObject DeathMenu;
+	public GameObject WinMenu;
     
     private Transform mainCam;
 
@@ -52,5 +53,9 @@ public class GameManager : MonoBehaviour {
 
 	public void GameOver(){
 		DeathMenu.SetActive(true);
+	}
+
+	public void GameWin(){
+		WinMenu.SetActive (true);
 	}
 }

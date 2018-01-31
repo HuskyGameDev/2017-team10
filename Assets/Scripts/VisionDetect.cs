@@ -89,7 +89,7 @@ public class VisionDetect : MonoBehaviour {
     private void Timer()
     {
         timer += Time.deltaTime;
-        if(timer >= 5.0)
+        if(timer >= 10.0)
         {
             detected = false;
             enemy.GetComponent<AIMovement>().Patrol();
