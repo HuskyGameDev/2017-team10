@@ -14,7 +14,6 @@ public class DoorScript : MonoBehaviour {
 	void Start () {
         openPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z) - transform.right * transform.localScale.x;
         closePosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        
     }
 	
 	// Update is called once per frame

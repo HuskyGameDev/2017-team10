@@ -22,11 +22,12 @@ public class InteractScript : MonoBehaviour {
         if (Input.GetButtonDown("Interact")) { //This will be f as standard
             Physics.Raycast(CamT.position, CamT.forward, out hit, interactRange); //Reach out
             if (hit.transform != null) {
+                Debug.Log(hit.transform.name);
                 if (hit.transform.tag == "Item") { //Item is anything that goes into inventory
                     if (hit.transform.GetComponent<ItemScript>() != null) {
                         hit.transform.GetComponent<ItemScript>().PickUp();
                         transform.GetComponent<ItemSwitch>().recheckItems = true; //Recheck the items to see if more ammo has been added that would affect what's being shown
-                    }else {
+                    } else {
                         Debug.LogError(hit.transform.name + " NEEDS ITEM SCRIPT AT " + hit.transform.position);
                     }
                 }
