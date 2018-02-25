@@ -68,7 +68,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
             if(!paused)
                 RotateView();
             // the jump state needs to read here to make sure it is not missed
-            if (!m_Jump) {
+            if (!m_Jump && !m_IsCrouching) {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
 
@@ -295,6 +295,12 @@ namespace UnityStandardAssets.Characters.FirstPerson {
                     m_CharacterController.transform.position += new Vector3(0, m_CharacterController.height - beforeHeight, 0);
                 }
 
+            }
+
+            if (m_IsCrouching) {
+                m_AudioSource.volume = .313f/2;
+            } else if (!m_IsCrouching && m_AudioSource.volume != .313f) {
+                m_AudioSource.volume = .313f;
             }
         }
 
