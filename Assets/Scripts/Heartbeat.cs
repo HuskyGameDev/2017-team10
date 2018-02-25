@@ -6,6 +6,8 @@ public class Heartbeat : MonoBehaviour {
     public AudioClip normalBeat;
     public AudioClip detectedBeat;
     public AudioClip calmingBeat;
+    public AudioClip detectedSound;
+    public AudioClip targetDestroyed;
 
     public AudioClip dying;
     public AudioClip flatLine;
@@ -26,6 +28,7 @@ public class Heartbeat : MonoBehaviour {
     public void OnDetect()
     {
         source.Stop();
+        source.PlayOneShot(detectedSound);
         source.clip = detectedBeat;
         source.Play();
     }
@@ -49,6 +52,7 @@ public class Heartbeat : MonoBehaviour {
     {
         source.Stop();
         source.PlayOneShot(dying);
+        source.PlayOneShot(targetDestroyed);
         
         source.PlayOneShot(flatLine);
     }

@@ -807,6 +807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 658803604}
   enemy: {fileID: 1715990776}
+  enemydetected: {fileID: 8300000, guid: 91d3889d3ae7b9f4284e90d6f0bb6079, type: 3}
 --- !u!1 &15122189
 GameObject:
   m_ObjectHideFlags: 0
@@ -5904,7 +5905,7 @@ Prefab:
     - target: {fileID: 82680807182388992, guid: 2b0ef3b124205c5488627e1983ce395f,
         type: 2}
       propertyPath: m_Volume
-      value: 0.313
+      value: 0.16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b0ef3b124205c5488627e1983ce395f, type: 2}
@@ -29226,6 +29227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 658803604}
   enemy: {fileID: 1491134081}
+  enemydetected: {fileID: 0}
 --- !u!1 &626322145
 GameObject:
   m_ObjectHideFlags: 0
@@ -30240,8 +30242,10 @@ MonoBehaviour:
   normalBeat: {fileID: 8300000, guid: da424419ce55ae14bb83453d336f64e1, type: 3}
   detectedBeat: {fileID: 8300000, guid: 9c834aae24e3f8a4aa95e5bf0f9a70ba, type: 3}
   calmingBeat: {fileID: 8300000, guid: 4454b36842eeff8429fa128830397ad5, type: 3}
+  detectedSound: {fileID: 8300000, guid: 91d3889d3ae7b9f4284e90d6f0bb6079, type: 3}
+  targetDestroyed: {fileID: 8300000, guid: b79bca2b197eda54395fe9171e11574d, type: 3}
   dying: {fileID: 8300000, guid: 7b5f9859e0037cb4cabbd6b79a6064fe, type: 3}
-  flatLine: {fileID: 8300000, guid: 4152b1d475e73cd408762933b41c2f24, type: 3}
+  flatLine: {fileID: 8300000, guid: 184a947d3066a4a6ab0dc2df6870ea46, type: 3}
 --- !u!82 &658803606
 AudioSource:
   m_ObjectHideFlags: 0
@@ -30253,7 +30257,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.614
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -41424,6 +41428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 658803604}
   enemy: {fileID: 113221892}
+  enemydetected: {fileID: 0}
 --- !u!1 &920541650
 GameObject:
   m_ObjectHideFlags: 0
@@ -49024,6 +49029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 658803604}
   enemy: {fileID: 1436597112}
+  enemydetected: {fileID: 0}
 --- !u!1 &1103120480
 GameObject:
   m_ObjectHideFlags: 0
@@ -88657,6 +88663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 658803604}
   enemy: {fileID: 1637676288}
+  enemydetected: {fileID: 0}
 --- !u!1 &2000879344
 GameObject:
   m_ObjectHideFlags: 0

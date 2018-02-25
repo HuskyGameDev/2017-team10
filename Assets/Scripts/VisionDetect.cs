@@ -6,7 +6,10 @@ public class VisionDetect : MonoBehaviour {
     
     public GameObject player;
     public GameObject enemy;
+    public AudioClip enemydetected;
 
+
+    private AudioSource source;
     private bool detected = false;
     private bool mia = false;
     private bool inCone = false;
@@ -38,6 +41,7 @@ public class VisionDetect : MonoBehaviour {
                 {
                     if (!detected)
                     {
+                    source.PlayOneShot(enemydetected);
                         enemy.GetComponent<AIMovement>().OnDetect();
                         detected = true;
                     }
