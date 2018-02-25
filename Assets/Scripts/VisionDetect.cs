@@ -10,14 +10,16 @@ public class VisionDetect : MonoBehaviour {
 
 
     private AudioSource source;
-    private bool detected = false;
-    private bool mia = false;
-    private bool inCone = false;
+    public bool detected = false;
+    public bool mia = false;
+    public bool inCone = false;
+    public bool barked = false; //This is to control the bark given when the player is seen
 
     private float timer;
 
 	// Use this for initialization
 	void Start () {
+        player = Camera.main.transform.parent.gameObject;
         timer = 0;
 	}
 	
@@ -41,7 +43,12 @@ public class VisionDetect : MonoBehaviour {
                 {
                     if (!detected)
                     {
-                    source.PlayOneShot(enemydetected);
+                        if (!barked) { //When the player is first spotted
+                            if(enemydetected != null) //Make sure there's an audio clip to play.
+                                source.PlayOneShot(enemydetected);
+                            barked = true;
+                        }
+                        
                         enemy.GetComponent<AIMovement>().OnDetect();
                         detected = true;
                     }
@@ -58,6 +65,7 @@ public class VisionDetect : MonoBehaviour {
             inCone = false;
             if(detected && !mia)
             {
+                barked = false; //When the player is lost
                 mia = true;
             }
         }
@@ -76,6 +84,11 @@ public class VisionDetect : MonoBehaviour {
                     {
                         enemy.GetComponent<AIMovement>().OnDetect();
                         detected = true;
+
+                        if (!barked) {
+                            source.PlayOneShot(enemydetected);
+                            barked = true;
+                        }
                     }
                     mia = false;
                     timer = 0;

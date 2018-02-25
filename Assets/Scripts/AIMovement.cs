@@ -30,6 +30,7 @@ public class AIMovement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        player = Camera.main.transform.parent.gameObject;
         agent = GetComponent<NavMeshAgent>();
         DrillState = PATROL;
         SentryState = PATROL;
