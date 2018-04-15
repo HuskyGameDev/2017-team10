@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!241 &24100000
+AudioMixerController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ambience low end roll off
+  m_OutputGroup: {fileID: 0}
+  m_MasterGroup: {fileID: 24300002}
+  m_Snapshots:
+  - {fileID: 24500006}
+  m_StartSnapshot: {fileID: 24500006}
+  m_SuspendThreshold: -80
+  m_EnableSuspend: 1
+  m_UpdateMode: 0
+  m_ExposedParameters: []
+  m_AudioMixerGroupViews:
+  - guids:
+    - dcdae0d5b3b2aae4393707889b58c942
+    - 20edfe95a15dcc744a963b55f431f8e6
+    name: View
+  m_CurrentViewIndex: 0
+  m_TargetSnapshot: {fileID: 24500006}
+--- !u!243 &24300002
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Master
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: dcdae0d5b3b2aae4393707889b58c942
+  m_Children:
+  - {fileID: 243510145566049766}
+  m_Volume: 1a8d654a0f9a6d144ac704969bb0a8c3
+  m_Pitch: beec3c12fcbf56d4d91a9d37576a622d
+  m_Effects:
+  - {fileID: 24400004}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &24400004
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: e3eead1ce75bf734d83c50b77ce919a5
+  m_EffectName: Attenuation
+  m_MixLevel: f4d7ee6d32b5fbb45b24fcaabc00647f
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!245 &24500006
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Snapshot
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 1778c9ecdf2bd1141aec3950593864fb
+  m_FloatValues:
+    edb60796b733dad438f9a4f9508e3a24: 1081
+    1a8d654a0f9a6d144ac704969bb0a8c3: -53.11144
+  m_TransitionOverrides: {}
+--- !u!243 &243510145566049766
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ambience low end roll off
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 20edfe95a15dcc744a963b55f431f8e6
+  m_Children: []
+  m_Volume: d3bdfa7b5b7be5d4694b2ccee9e90874
+  m_Pitch: 3f239719fad2bb545b33f4f95c3720af
+  m_Effects:
+  - {fileID: 244460248996692842}
+  - {fileID: 244950864878678830}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &244460248996692842
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: df163547a8dae0f428a76e1107c9ef96
+  m_EffectName: Attenuation
+  m_MixLevel: f52fc9edcbe5065439bc7c603b3b4c63
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244950864878678830
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 79d30c1d5fd6a594dacfbaae93806836
+  m_EffectName: Highpass
+  m_MixLevel: 5782b6a23b6d2604498d4c339b09730d
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: edb60796b733dad438f9a4f9508e3a24
+  - m_ParameterName: Resonance
+    m_GUID: 9fa68eb47ed09a043be23adff6e5d985
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
