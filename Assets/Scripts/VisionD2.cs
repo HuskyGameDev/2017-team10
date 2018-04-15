@@ -12,7 +12,7 @@ public class VisionD2 : MonoBehaviour {
     public float timerLimit = 2f; //How long it takes for the player to be spotted.
 
     private AudioSource source;
-    private GameObject enemy;
+    public GameObject enemy;
     private float timer = 0; //For detection
     private float timer2 = 0; //For forgetting the player
 
