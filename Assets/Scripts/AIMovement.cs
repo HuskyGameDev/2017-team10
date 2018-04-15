@@ -34,7 +34,7 @@ public class AIMovement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        player = Camera.main.transform.parent.gameObject;
+        //player = Camera.main.transform.parent.gameObject;
         agent = GetComponent<NavMeshAgent>();
         DrillState = PATROL;
         SentryState = PATROL;
@@ -150,13 +150,13 @@ public class AIMovement : MonoBehaviour {
        
         if (gameObject.CompareTag("AttackEnemy") && DrillState != DISABLED)
         {
-            player.GetComponent<Heartbeat>().OnDetect();
+            //player.GetComponent<Heartbeat>().OnDetect();
             agent.speed = 3.5f;
             DrillState = FOLLOW;
         }
         if (gameObject.CompareTag("SentryEnemy") && SentryState != DISABLED)
         {
-            player.GetComponent<Heartbeat>().OnDetect();
+            //player.GetComponent<Heartbeat>().OnDetect();
             SentryState = FOLLOW;
             agent.speed = 5;
             if(!summoned)
@@ -175,7 +175,7 @@ public class AIMovement : MonoBehaviour {
                 }
                 if (closest != null)
                 {
-                    closest.gameObject.GetComponent<AIMovement>().OnDetect();
+                    //closest.gameObject.GetComponent<AIMovement>().OnDetect();
                     summoned = true;
                 }
             }

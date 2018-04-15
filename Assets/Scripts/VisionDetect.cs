@@ -43,11 +43,11 @@ public class VisionDetect : MonoBehaviour {
                 {
                     if (!detected)
                     {
-                        if (!barked) { //When the player is first spotted
-                            if(enemydetected != null) //Make sure there's an audio clip to play.
-                                source.PlayOneShot(enemydetected);
-                            barked = true;
-                        }
+                        //if (!barked) { //When the player is first spotted
+                        //    if(enemydetected != null) //Make sure there's an audio clip to play.
+                        //        source.PlayOneShot(enemydetected);
+                        //    barked = true;
+                        //}
                         
                         enemy.GetComponent<AIMovement>().OnDetect();
                         detected = true;
