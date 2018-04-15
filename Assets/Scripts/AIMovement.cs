@@ -8,7 +8,7 @@ public class AIMovement : MonoBehaviour {
     public Transform target1;
     public Transform target2;
 
-    public Transform[] targetLocations;
+    //public Transform[] targetLocations;
     public int targetInt = 0;
 
     NavMeshAgent agent;
@@ -49,17 +49,18 @@ public class AIMovement : MonoBehaviour {
             {
                 case PATROL:
                     // Set the Nav Agent's destination based on the tar variable
-                    /*
+                    
                     if (tar)
                         agent.SetDestination(target1.position);
                     else
                         agent.SetDestination(target2.position);
-                    */
+                    
 
                     // Switch targets once the target is reached
                     if (Vector3.Distance(agent.transform.position, agent.destination) < agent.stoppingDistance)
                     {
                         //tar = !tar;
+                        /*
                         if(targetInt + 1 == targetLocations.Length) { //If it's at the end of the list of patrolling locations.
                             targetInt = 0;
                         } else {
@@ -67,7 +68,7 @@ public class AIMovement : MonoBehaviour {
                         }
 
                         agent.SetDestination(targetLocations[targetInt].position); //Set the next location to move patrol towards
-
+                        */
                     }
                     break;
                 case FOLLOW:
@@ -100,26 +101,27 @@ public class AIMovement : MonoBehaviour {
             {
                 case PATROL:
                     // Set the Nav Agent's destination based on the tar variable
-                    /*
+                    
                     if (tar)
                         agent.SetDestination(target1.position);
                     else
                         agent.SetDestination(target2.position);
-                    */                
+                                 
 
                     // Switch targets once the target is reached
                     if (Vector3.Distance(agent.transform.position, agent.destination) < agent.stoppingDistance)
                     {
-                        //tar = !tar;
+                        tar = !tar;
+                        /*
                         if (targetInt + 1 == targetLocations.Length) { //If it's at the end of the list of patrolling locations.
                             targetInt = 0;
                         }
                         else {
                             targetInt++;
                         }
-
+                        
                         agent.SetDestination(targetLocations[targetInt].position); //Set the next location to move patrol towards
-
+                        */
                     }
                     break;
                 case FOLLOW:
