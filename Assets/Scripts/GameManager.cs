@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
 	public GameObject PauseMenu;
 	public GameObject DeathMenu;
 	public GameObject WinMenu;
+	public GameObject MM;
+	public GameObject LS;
     
     private Transform mainCam;
 
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour {
 			PauseMenu.SetActive(true);
             mainCam.GetComponentInParent<FirstPersonController>().SetPause();
             mainCam.GetComponent<LeanScript>().paused = true;
+			Cursor.visible = true;
             Time.timeScale = 0f;
 		}
 		Debug.Log ("GAMEMANAGER:: TimeScale: " + Time.timeScale);
@@ -40,6 +43,16 @@ public class GameManager : MonoBehaviour {
 
 	public void NewGameBtn(string newGameLevel){
 		SceneManager.LoadScene (newGameLevel);
+	}
+
+	public void LevelSelectionBtn(){
+		MM.SetActive (false);
+		LS.SetActive (true);
+	}
+
+	public void BackBtn(){
+		MM.SetActive (true);
+		LS.SetActive (false);
 	}
 
 	public void ExitGameBtn(){
@@ -53,6 +66,9 @@ public class GameManager : MonoBehaviour {
 
 	public void GameOver(){
 		DeathMenu.SetActive(true);
+		mainCam.GetComponentInParent<FirstPersonController>().SetPause();
+		mainCam.GetComponent<LeanScript>().paused = true;
+		Time.timeScale = 0f;
 	}
 
 	public void GameWin(){

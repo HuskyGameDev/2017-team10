@@ -237,7 +237,6 @@ namespace UnityStandardAssets.Characters.FirstPerson {
 
         public void SetPause() {
             paused = !paused;
-			Cursor.visible = !Cursor.visible;
         }
 
         private void RotateView() {

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class AIMovement : MonoBehaviour {
     // Reads in 2 empty objects as target locations
@@ -32,12 +34,16 @@ public class AIMovement : MonoBehaviour {
 
     private GameObject closest = null;
 
+	private Transform mainCam;
+
     // Use this for initialization
     void Start () {
         //player = Camera.main.transform.parent.gameObject;
         agent = GetComponent<NavMeshAgent>();
         DrillState = PATROL;
         SentryState = PATROL;
+		mainCam = Camera.main.transform;
+
     }
 
     // Update is called once per frame
@@ -80,11 +86,23 @@ public class AIMovement : MonoBehaviour {
                     }
                     break;
 			case ATTACK:
-				if (!dead)
-					//player.GetComponent<Heartbeat> ().OnDeath ();
-				Time.timeScale = 0.0f;
+					//if (!dead)
+						//player.GetComponent<Heartbeat> ().OnDeath ();
+					//Time.timeScale = 0.0f;
+
+				DrillState = DISABLED;
+				if (!dead) {
+					//GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameManager> ().GameOver ();
+
+
+					//sCursor.visible = !Cursor.visible;
+					//mainCam.GetComponentInParent<FirstPersonController>().SetPause();
+				}
 				dead = true;
-				GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().GameOver();
+				GameObject.FindGameObjectWithTag ("AttackEnemy").SetActive (false);
+				GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameManager> ().GameOver ();
+				//Cursor.visible = !Cursor.visible;
+					
                     break;
                 case DISABLED:
                     agent.isStopped = true;

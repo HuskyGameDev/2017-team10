@@ -46,10 +46,11 @@ public class CameraLook : MonoBehaviour {
         transform.localEulerAngles = new Vector3(rotY, rotX);
 
         if (cursorLock)
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.lockState = CursorLockMode.Locked;
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-            cursorLock = !cursorLock;
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+		}
+            //cursorLock = !cursorLock;
 
 	}
 }
